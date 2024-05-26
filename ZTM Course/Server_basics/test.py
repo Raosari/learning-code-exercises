@@ -38,6 +38,3 @@ def send_email(email_to_contact, subject = ""):
                 raise ValueError('SMTP Authentication failed. Check email address and app password.')
     except Exception as e:
         return f'Email not sent. Error: {str(e)}'
-
-
-send_email("mraosari@gmail.com")
