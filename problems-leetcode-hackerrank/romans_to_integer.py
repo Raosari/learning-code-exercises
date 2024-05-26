@@ -39,7 +39,7 @@ def roman_to_int(string):
     return result
 
 def roman_to_int2(string):
-    letters = string[::-1]
+    letters = string[::-1].upper()
     result = 0
     previous = 0
     roman_numbers = {
@@ -60,5 +60,5 @@ def roman_to_int2(string):
             result -= number
         previous = number
     return result
-A = roman_to_int2("XL")
+A = roman_to_int2("MCMXCIV")
 print(A)

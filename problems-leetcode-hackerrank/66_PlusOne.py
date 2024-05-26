@@ -16,7 +16,7 @@ class Solution:
         for i in range(len(ans)):
             k.append(int(ans[i]))
         return k
-    
+a = 0
 
 sol1 = Solution()
 a = sol1.plusOne([1,4,3,9])

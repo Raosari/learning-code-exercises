@@ -12,21 +12,43 @@
 # Output: -1 
 
 from itertools import permutations
+import functools
 
-def largestHourPossible(digits):   
+def largestHourPossible(Array):   
     max_time = -1
-    # return  [el for el in listaDeHoras]
-    for elements in permutations(digits):
+    listaDeHoras = permutations(Array)
+
+    for elements in listaDeHoras:
         hours = elements[0]*10 + elements[1]
         minutes = elements[2]*10 + elements[3]
 
         if 0 <= hours <= 23 and 0 <= minutes <= 59:
             current_time = hours*60 + minutes
-            max_time = max(current_time,max_time)
+            max_time = current_time if current_time > max_time else max_time
 
-    return max_time if max_time == -1 else f"{max_time//60}:{max_time % 60}"
+    if max_time == -1: return max_time
+    return f"{max_time//60}:{max_time % 60}"
 
-a = largestHourPossible([1,2,3,4])
+
+def largestHourPossible2(Array):   
+    max_time = [-1]
+    listaDeHoras = permutations(Array)
+
+    for elements in listaDeHoras:
+        hours = elements[0]*10 + elements[1]
+        minutes = elements[2]*10 + elements[3]
+        current_time = hours*60 + minutes
+        
+        if 0 <= hours <= 23 and 0 <= minutes <= 59:
+            max_time.append(current_time)
+
+    if max_time == [-1]:        
+        return print(max_time[0])
+     
+    max_time = functools.reduce(lambda a,b: a if a > b else b,max_time)     
+    return f'{max_time//60}:{max_time % 60}'
+Digits = [1,2,3,4]
+a = largestHourPossible(Digits)
 print(a)
 
 
