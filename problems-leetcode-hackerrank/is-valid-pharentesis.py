@@ -16,8 +16,8 @@ def isValid(string):
     }
 
     for elem in string:
-        if elem in closed_par
-        if not calls or closed_par[elem] != calls.pop():
+        if elem in closed_par:
+            if not calls or closed_par[elem] != calls.pop():
                 return False
         else:
             calls.append(elem)
