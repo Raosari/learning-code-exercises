@@ -92,10 +92,3 @@ def distance(matrix_a):
 
 a = distance(matrix_given)
 print(a)
-
-
-# for el in allMagicSquares:
-#     for row in el:
-#         print(row)
-#     print("\n")
-
