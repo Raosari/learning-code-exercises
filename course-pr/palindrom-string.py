@@ -1,19 +1,20 @@
-import functools
+from functools import reduce
 
 def palindromo(string):
-    cleaned_txt = string.replace(" ","")
-    reversed_string = cleaned_txt[::-1]
+    cleaned_txt = string.replace(" ","").lower()
+    return cleaned_txt == cleaned_txt[::-1]
 
-    if cleaned_txt.lower() == reversed_string.lower():
-        return f'el texto: "{string}", es un palindromo'
-    else:
-        return -1
 
 def palindromo2(string):
-    cleaned_text = string.replace(" ","")
-    reversed_string = functools.reduce(lambda acc, char: char + acc,cleaned_text)
-    return cleaned_text.lower() == reversed_string.lower() 
-                
-a = palindromo2("amo la paloma")
-print(a)
+    return string == reduce(lambda acc, char: char + acc, string.replace(" ","").lower())
 
+
+def palindromo3(string):   
+    string = string.replace(" ","").lower()
+    reversed = []
+    for char in string:
+        reversed.insert(0,char)   #dudo de la eficiencia aqui
+    return string == "".join(reversed)
+
+a = palindromo3("amo la paloma")
+print(a)
